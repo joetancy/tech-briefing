@@ -1,4 +1,8 @@
 # Tech Briefing
+## Website
+
+**Live site:** https://joetancy.github.io/tech-briefing/
+
 
 Daily engineering and AI briefings, published as Markdown and rendered with GitHub Pages.
 
