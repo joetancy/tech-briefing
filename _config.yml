@@ -1,0 +1,9 @@
+title: Joe's Daily Tech Briefing
+description: Daily engineering and AI briefing
+theme: minima
+timezone: Asia/Singapore
+permalink: /:year/:month/:day/:title/
+show_excerpts: true
+
+header_pages:
+  - archive.md
