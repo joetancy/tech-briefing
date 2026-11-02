@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Daily Tech Briefing — 2 November 2026"
+title: "HackerBooks, Nibnib and a 3D thermal cloak"
 date: 2026-11-02 07:30:00 +0800
 categories: [tech-briefing]
 ---
@@ -12,33 +12,43 @@ Prepared: 7:30 AM SGT
 Source: Hacker News front page, as ranked at about 7:17 AM SGT on November 2, 2026 (page crawled 23:17 UTC, November 1). Listed in current ranking order, not by points.
 
 ### 1. Show HN: HackerBooks – HackerTube, but for books mentioned on HN — hackerbooks.org 🆕 New
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50326821) · [Source](https://hackerbooks.org)
 Following the HackerTube idea from yesterday's front page, HackerBooks collects books mentioned in Hacker News comments into a browsable site. It turns years of HN discussion into a reading list curated by what the community actually recommended, rather than by bestseller charts or algorithms. If HackerTube was the video version, this is the same trick applied to books — and a reminder of how much signal sits in HN's comment history.
 
 ### 2. So I guess everyone uses LLMs to think now — eva.ac
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50330253) · [Source](https://eva.ac/blog/llms/)
 The essay's premise is in its title: using an LLM has stopped being a special technique and become the default way many people now think through a problem. That shift raises a quieter question than whether the answers are right — what happens to judgement, memory, and the ability to reason alone when the first move is always to ask the model. It is a short, reflective read rather than a benchmark or a product announcement, and it pairs naturally with the mathematics post at #8.
 
 ### 3. Nibnib: Image compression with extreme decompression speed — github.com/raphlinus
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50299811) · [Source](https://github.com/raphlinus/nibnib)
 Nibnib is a new image format by Raph Levien, tuned for extreme decompression speed at 4 bits per pixel. It decodes two pixels at a time from a single byte, using a palette that stores a delta rather than an absolute colour, which improves quality in soft regions over plain palette images. It was designed for microcontroller DVI output — roughly six cycles per pixel on an RP2350 — where a pixel fetch, palette lookup, and line-buffer store leave almost no headroom. Encoding is deliberately asymmetric and much slower than decoding, trading encoder effort for a decoder simple enough for tiny hardware.
 
 ### 4. HackerTube: YouTube built from videos recommended by HN — karpathy.bearblog.dev
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50319510) · [Source](https://karpathy.bearblog.dev/hacker-tube/)
 HackerTube, still on the front page a day after topping it, turns 6,454 YouTube videos recommended in Hacker News comments between 2007 and 2026 into a curated video site. It offers topic browsing, custom recommendations without accounts, keyboard shortcuts, and downloadable data for building your own version. Its staying power on the front page says something about HN's appetite for its own archive as a recommendation source — see #1 for the book-shaped sequel.
 
 ### 5. Tips for more effective fuzz testing with AFL++ — nullprogram.com
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50271106) · [Source](https://nullprogram.com/blog/2025/02/05/)
 Originally published in February 2025 and resurfacing on the front page, this is a checklist from fuzzing around 1,000 projects over six years. The headline tips: fuzz with AddressSanitizer and UndefinedBehaviorSanitizer enabled, prefer AFL++'s persistent mode (typically an order of magnitude faster than in-place fuzzing), and skip work irrelevant to the test — including freeing memory — so the harness stays fast and isolated. If you maintain a parser or anything that accepts complex input and have never fuzzed it, this is the practical starting point.
 
 ### 6. Ask HN: Which TV do you recommend for privacy?
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50328896)
 This is a community discussion, not a product review: HN readers asking which televisions respect privacy, given smart TVs' reputation for ads, tracking, and automatic content recognition. The usual trade-offs in the thread's territory are dumb or commercial displays versus mainstream smart TVs, and network-level blocking versus giving up smart features entirely. Worth skimming before buying a living-room screen — the "best picture" pick and the "least surveillance" pick are rarely the same set.
 
 ### 7. Copper – A minimal low-level programming language with OOP and generics — tibleiz.net
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50308754) · [Source](https://tibleiz.net/copper/)
 Copper is a simple, statically typed procedural language with basic type inference and generics. Everything is manipulated by reference — even integers are references to stateless objects — assignment copies the reference, and passing an argument passes the reference by value. It is not fully object-oriented, but it offers type inheritance, contextual functions (methods), and a `vtable` command for generating virtual function tables. A small language worth a look if you enjoy minimal designs that still try to answer the OOP-and-generics question honestly.
 
 ### 8. Mathematics has changed. Let's act like it — terrytao.wordpress.com
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50328251) · [Source](https://terrytao.wordpress.com/2026/11/01/mathematics-has-changed-lets-act-like-it/)
 A guest post by Frank Calegari on Terence Tao's blog, written in the wake of OpenAI's October 6 release of over 700 mathematics papers. Its argument: AI can now make genuine contributions across many areas of mathematics, and the community should stop grieving the old economy of results and adapt — while still calling out poor attribution and writing in the AI-generated papers. The value of a mathematician, it suggests, is shifting from producing a result to asking interesting questions, verifying and explaining machine output, and finding new playgrounds once old problems fall. The optimists-versus-pessimists framing — "for the pessimists, the game is over; for the optimists, the game has just changed" — is the line to take away.
 
 ### 9. New 3D thermal invisibility cloak makes objects disappear from infrared cameras — sciencedaily.com
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50299427) · [Source](https://www.sciencedaily.com/releases/2026/10/261025073051.htm)
 Researchers at the University of Illinois Urbana-Champaign and the Technical University of Denmark have built and tested the first three-dimensional thermal invisibility cloak. A 3D-printed aluminium lattice filled with a rubber-like, poorly conducting material guides heat around a hidden object instead of blocking it, so an infrared camera sees an undisturbed temperature field — as if nothing were there — from any direction. The team concealed complex shapes, including head-like forms, while keeping the temperature inside stable. Beyond stealth, the same heat-routing idea could help cool microchips and protect delicate electronics from thermal extremes.
 
 ### 10. Show HN: OmniDiff – Opensource, super fast, content aware Git difftool, in Rust — github.com/ivankovic
+* [Hacker News discussion](https://news.ycombinator.com/item?id=50325253) · [Source](https://github.com/ivankovic/omnidiff)
 OmniDiff is an open-source Git difftool written in Rust that adapts its comparison to the file's content rather than treating everything as plain text. It claims support for 25 programming languages plus configuration files, images, PDFs, archives, cursors, and fonts, and is built for speed on large files — tens of thousands of lines of C++ in the project's telling. One practical gotcha from early users: by default it exits 0 even when files differ, since it is a display tool; use `--exit-code` (0 = identical, 1 = different, 2 = error) when scripting against it, and note it ignores that flag in Git's external-diff form.
 
 ## Tech & AI Roundup
