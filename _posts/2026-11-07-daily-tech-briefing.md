@@ -1,0 +1,83 @@
+---
+layout: post
+title: "Cybertruck winds down, Firecracker escape, AI accelerates itself"
+categories: [tech-briefing]
+date: 2026-11-07 07:30:00 +0800
+---
+
+Prepared: 7:30 AM SGT — Saturday, 7 November 2026
+
+## Hacker News Top 10
+
+### 1. A Jev that can ask Opus for help gives Opus accuracy at 4x lower cost 🆕 New
+Hightouch tested whether cheap "decision models" can grade identity-resolution output — deciding if a bundle of records really describes one person. Jev alone hit 95.6% accuracy at $0.05 per 1,000 identities, but its confidence scores are well calibrated, so routing only the uncertain 30–90% band to Claude Opus 5.5 lifts accuracy to 98.8% at $0.88 per 1,000 — near-Opus accuracy at over 4x lower cost. On harder test cases the hybrid even edged out Opus alone (95.3% vs 95.1%), while GPT-6 Luna's overconfidence made it a worse partner for the same trick.
+- [Discussion](https://news.ycombinator.com/item?id=50397429) · [Source](https://hightouch.com/blog/llm-judges-identity-resolution)
+
+### 2. CATL Sodium Battery Hits LFP Cost Parity in 2026: 15,000 Cycles, 30-Year Life 🆕 New
+CATL's Tener sodium-ion energy storage system is rated for 15,000 charge cycles — translating to a 25–30 year service life at 70% capacity retention, roughly double what most LFP deployments deliver in high-cycling use — while retaining over 92% capacity at −20°C without extra heating or cooling. The modules are drop-in compatible with existing LFP infrastructure, and analysts expect sodium-ion cell costs to reach parity with LFP in 2026 and undercut it in 2027; CATL has signed a 60 GWh sodium-ion order with Beijing HyperStrong and targets 200+ GWh of deployment. (Note: the linked ievchina.com article itself was unreadable — Cloudflare check, then a database error — so this summary is drawn from corroborating coverage of CATL's Tener announcement.)
+- [Discussion](https://news.ycombinator.com/item?id=50399657) · [Source](https://ievchina.com/energy-storage/catl-sodium-battery-cost-parity-lfp-2026-15000-cycles/)
+
+### 3. AI is dramatically accelerating AI research 🆕 New
+A METR researcher's reading of a new deep-access METR report on Anthropic argues the lab has already crossed its own "dramatically accelerated progress due to AI" threshold: capabilities progress roughly doubled between October 2025 and October 2026, mostly attributable to AI automating AI R&D. The author models that doubling overall progress implies a ~10x uplift in researcher labour — in line with Anthropic staff informally reporting ~12x — and warns that, naively extrapolated, compounding acceleration points to extreme capabilities within about a year. Much of the underlying evidence is redacted, so the argument rests heavily on trusting METR's analysis.
+- [Discussion](https://news.ycombinator.com/item?id=50397994) · [Source](https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai)
+
+### 4. Firecracker VM Escape: PwnEscape Part 2 🆕 New
+Researchers chained a host-memory primitive (from part 1) into a full escape from AWS's Firecracker microVM, achieving code execution as root on the host. They walked Extended Page Tables from a guest page to host memory, recovered the Firecracker process's page tables, located the live vCPU thread's saved register frame, and rewrote it so the thread executed a call of their choosing when it returned from KVM — then restored everything so Firecracker kept running and the VM stayed reachable over SSH. The demo ran on Firecracker v1.16.1 without the jailer, so production deployments with privilege-dropping and seccomp would face a different bar.
+- [Discussion](https://news.ycombinator.com/item?id=50397219) · [Source](https://pwn.ai/blog/firecracker-escape)
+
+### 5. Tesla to wind down Cybertruck production 🆕 New
+Tesla will wind down Cybertruck production at its Texas gigafactory around mid-2027, Elon Musk said in an X post, freeing capacity for more output of the newly launched Cybercab, central to Tesla's robotaxi ambitions — Musk called the truck the "best vehicle Tesla has ever made" and the move the "end of an era". The numbers explain it: US sales were 20,237 last year, down 48% from 38,965 in 2024, against Musk's pre-launch prediction of 250,000 a year, and the angular stainless-steel design limited it to a handful of markets, with European approval effectively impossible on pedestrian-impact rules. It is not yet clear whether production moves elsewhere or ends entirely; Austin is the only known plant equipped for its specialised components.
+- [Discussion](https://news.ycombinator.com/item?id=50391456) · [Source](https://www.nbcnews.com/tech/tech-news/tesla-wind-cybertruck-production-years-poor-sales-markets-rcna607817)
+
+### 6. US FAA says it will phase out floppy disks from air traffic control by 2028 🆕 New
+The FAA will replace the floppy disks still used for weather and other critical information at more than 400 air traffic control facilities by the end of 2028, folding four 1980s-era display systems into a single modern Enterprise Information Display System (E-IDS) at 435 sites. The first five sites — Atlantic City, Nashville and Greater Rochester airports plus data hubs in Atlanta and Salt Lake City — are already done, six years ahead of the GAO's previous September 2034 expectation. The work is part of the $12.5 billion ATC modernisation Congress funded last year, with Transportation Secretary Sean Duffy asking for another $30 billion. (Note: the Reuters article itself was blocked by a DataDome bot check, so this summary is drawn from Reuters' reporting via search results and corroborating coverage.)
+- [Discussion](https://news.ycombinator.com/item?id=50388001) · [Source](https://www.reuters.com/world/us/us-faa-says-it-will-phase-out-floppy-disks-air-traffic-control-by-2028-2026-11-05/)
+
+### 7. ChatGPT silently passes data between connectors and the bounty wants an ID card 🆕 New
+A security report on OpenAI's developer forum describes ChatGPT silently routing a follow-up tool call to the wrong connector: with two connectors pointed at the same MCP server — a custom developer-mode connector and the published app, each with its own OAuth client — ChatGPT confirmed an action through the first connector's widget, then sent the follow-up carrying the one-time confirmation code through the second, without telling the user. The server rejected the call because the code was bound to the first connector's OAuth client, so nothing leaked in this case, but the reporter warns the same switch could pass one app's data to a different provider and argues follow-ups must be matched by OAuth client, not server URL. (The "bounty wants an ID card" part of the headline was not confirmed in the forum posts read.)
+- [Discussion](https://news.ycombinator.com/item?id=50399569) · [Source](https://community.openai.com/t/security-follow-up-tool-call-silently-routed-to-a-different-connector/1413053)
+
+### 8. The Ubuntu 26.04 Rust sudo is not compatible with standard sudo 🆕 New
+Chris Siebenmann found that sudo-rs, the Rust sudo shipped in Ubuntu 26.04, silently ignores `/etc/sudoers.d` files with no logging, and that it treats command-line wildcards literally — a long-standing rule like `exim -bp[acru]` works under standard sudo but fails under sudo-rs, whose manual says wildcards in arguments aren't supported except a trailing `*`. He switched all his 26.04 machines back with `update-alternatives --set sudo /usr/bin/sudo.ws`, but removing sudo-rs would also remove `ubuntu-minimal`, so it stays installed; he notes a possible move to Debian in 2028 when his 24.04 LTS machines are replaced.
+- [Discussion](https://news.ycombinator.com/item?id=50354308) · [Source](https://utcc.utoronto.ca/~cks/space/blog/linux/Ubuntu2604RustSudoNotCompatible)
+
+### 9. First steps in bare-metal programming using UEFI 🆕 New
+Kevin Boone's five-part series is an index for experienced Linux developers with no prior UEFI knowledge, walking through bare-metal programming on a PC-type computer using a Linux workstation. The parts cover compiling and linking, the EFI system partition, making a DVD or USB flash image, a pragmatic digression, and handling files with the Simple File Protocol. (Note: the `www` URL served a certificate error, but the same page loads at the bare domain.)
+- [Discussion](https://news.ycombinator.com/item?id=50394855) · [Source](https://www.kevinboone.me/efitest_index.html)
+
+### 10. Restaurant Delivery Payment-Skimming Campaign 🆕 New
+Scammers clone a restaurant's real ordering website under an impersonating domain — reverse-proxying and rewriting the whole site so it looks identical — then substitute their own credit-card form at checkout to skim payment details. Traffic comes mainly from paid search ads: the fake site can appear above the real restaurant in Google results. Per the article as quoted in the discussion, at least 47 Google Search text ads ran between July 7 and October 20, 2026, under at least 46 separate advertiser accounts with 43 different, unrelated-looking business names. Commenters mostly blame the ad platforms for letting scam ads run, and note that reporting to Google, Meta, hosts and registrars rarely gets timely action. (Note: the infohawk.com article itself now returns a 404, so this summary is drawn from the Hacker News discussion quoting it.)
+- [Discussion](https://news.ycombinator.com/item?id=50397017) · [Source](https://infohawk.com/restaurant-delivery-payment-skimming-campaign/)
+
+## AI
+- **OpenAI shipped GPT-6 Cyber** (Nov 5), a cybersecurity model built on GPT-6 Astra for vetted enterprise defenders in its Daybreak Red programme, trained to find and validate exploitable vulnerabilities within researcher-set scope. ([Medium](https://medium.com/@stealprofit/this-week-in-ai-gpt-6-cyber-for-defenders-15-second-gemini-videos-and-claude-reads-your-bank-143b8131cb96))
+- **Google made Gemini Omni 1.2 Flash generally available** (Nov 5) across AI Studio, the Gemini API, Vertex AI, Flow, Vids and Ads: native video generation and editing up to 15 seconds (up from 10), at 30% lower pricing. ([Google blog](https://blog.google/innovation-and-ai/technology/developers-tools/introducing-gemini-omni-1-2-flash/))
+- **Anthropic opened Personal Finance in Claude** as a US beta (Nov 5) for Pro, Max and Ultra subscribers: read-only bank and card access via Plaid, showing balances and up to two years of transactions, with no ability to move money. ([Medium](https://medium.com/@stealprofit/this-week-in-ai-gpt-6-cyber-for-defenders-15-second-gemini-videos-and-claude-reads-your-bank-143b8131cb96))
+- **METR published a high-access risk assessment** (Nov 5) of AI accelerating AI R&D inside Anthropic, estimating capabilities progress is improving roughly twice as fast as the March 2024–October 2025 rate. ([METR](https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/))
+- **OpenAI's Images 2.6 is live** in ChatGPT, Codex and the API (Nov 4), with ~50% faster generation, GIF creation and tighter edit control. ([Medium](https://medium.com/@stealprofit/this-week-in-ai-gpt-6-cyber-for-defenders-15-second-gemini-videos-and-claude-reads-your-bank-143b8131cb96))
+
+## Frontend
+- **Chrome 157 is out**, with HTML-in-Canvas stable (interactive DOM inside 2D, WebGL and WebGPU) and fixes for 213 security bugs; Chrome 158 follows on November 17 and drops XSLT except for Origin Trial and Enterprise Policy users. ([This Week In React](https://substack.thisweekinreact.com/p/this-week-in-react-304))
+- **Next.js shipped security releases 16.4.5 and 15.5.29**, fixing 7 medium-severity vulnerabilities, and its new `next-bundle-optimizer` agent skill gives coding agents the Turbopack module graph to find imports that defeat lazy loading and tree shaking. ([This Week In React](https://substack.thisweekinreact.com/p/this-week-in-react-304))
+- **TanStack Redact 0.3 adds Webpack and Rspack plugins** for browser SPAs: a drop-in React replacement that renders synchronously and measures ~23 KB gzipped against ~69 KB for React 19.3.0. ([This Week In React](https://substack.thisweekinreact.com/p/this-week-in-react-304))
+- **Firefox 159 ships CSS scroll-driven animations**, so all three major engines now support them, and **TypeScript 7.1 beta** stabilises the API for building tooling on the Go-based compiler. ([Enpitech](https://enpitech.dev/blog/frontend-digest-2026-11-01))
+- **Node.js 26.13.0 moves 26.x into LTS (Lithium)**, supported through April 2029, and **Node.js 27.0 alpha** is the first release under the new model, with V8 15.6 and native `fs.glob`. ([Enpitech](https://enpitech.dev/blog/frontend-digest-2026-11-01))
+
+## Emulation, Retro Games & FPGA
+- **Power Moon Recomp went public** (Nov 2–3), a native PC port of Super Mario Odyssey built by static recompilation — reportedly playable start to finish at 4K/60 on Windows, Linux and macOS, with players supplying their own copy. ([Tech Insider](https://tech-insider.org/super-mario-odyssey-native-pc-port-power-moon-recomp-4k-60fps-2026/))
+- **Brawl Recompiled brings Super Smash Bros. Brawl to native PC** (v0.5.3) via static recompilation of the Wii's PowerPC code to C++, with 4K, up to 240 FPS, ultrawide and Project+ mod support — no emulator, own dump required. ([Pro Gamer](https://pro-gamer.gg/super-smash-bros-brawl-native-pc-port-4k-240-fps-brawl-recompiled-project-plus-online/))
+- **MediEvil's AI-free recomp hit 1.0** (Nov 2), with stability, analogue, audio and FMV fixes, a Mod Hub and an in-game Asset Pack Editor — built without generative AI tooling. ([Time Extension](https://www.timeextension.com/news/2026/11/we-have-the-skills-to-bring-love-to-these-old-games-after-last-months-beta-medievils-ai-free-recomp-hits-version-1-0))
+- **Xbox Labs responded to the wave of AI-assisted game ports** (Halo in a browser, Melee in mixed reality, P.T. as a native PC port), as The Verge's running roundup was last updated Nov 4 — the decomp/recomp/port distinction and copyright questions are now front and centre. ([Windows Forum](https://windowsforum.com/news/xbox-labs-responds-to-ai-game-ports-halo-retro-gaming-and-copyright-questions.451004/))
+- **Jotego released NARC, Arbalester and Meta Fox FPGA cores**, alongside deep hardware validation updates for CPUs, sound chips and Capcom's CPS-3 hardware. ([Pants Pants Revolution](https://pantspantsrevolution.com/october-31st-week-in-review/))
+
+## Cybersecurity
+- **Google disrupted the X.CPE botnet**, built into more than 1.3 million Android devices — mostly TV set-top boxes — alleging manufacturer Videostrong deliberately installed a backdoor and sold criminals access. ([BreachScout](https://www.breachscout.com/signal/2026-11-04))
+- **Zyxel's GS1900 zero-day (CVE-2026-107441, CVSS 8.8) compromised 996 switches in 48 countries** from around August 17; the June patch for CVE-2026-7273 didn't stop it, and the real fix shipped October 22 with Zyxel's advisory on November 3. ([ICHI Global](https://ichi.global/briefs/ichi-daily-2026-11-05))
+- **APT's HTTP backend has a root-level flaw (CVE-2026-109518, CVSS 7.7)**: an on-path attacker who can manipulate HTTP traffic to an archive server could trigger installation of an attacker-controlled .deb and gain root; no exploitation reported. ([ICHI Global](https://ichi.global/briefs/ichi-daily-2026-11-05))
+- **Binance's first incident report details a months-long intrusion** involving fake recruitment interviews, tampered developer software and abuse of an internal AI tool. ([BreachScout](https://www.breachscout.com/signal/2026-11-04))
+- **Google's November Android updates address 200+ vulnerabilities**, including a critical remote-code-execution flaw (CVE-2026-58868) affecting Android 14–17. ([BreachScout](https://www.breachscout.com/signal/2026-11-04))
+
+## AWS
+- **AWS launched Kiro bots** (Nov 5, GA), persistent agents in the Kiro Crew workspace that handle recurring dev jobs — triaging issues, watching builds, reviewing changes — with memory of past decisions. ([VentureBeat](https://venturebeat.com/technology/aws-launches-agentic-ai-kiro-bots-with-memory-and-support-for-recurring-development-jobs))
+- **AWS added NVIDIA GPU partitioning (MIG) to SageMaker Inference** (Nov 6), letting multiple hardware-isolated models share one accelerator on real-time endpoints; available in Singapore among seven regions. ([Unite.AI](https://www.unite.ai/aws-adds-nvidia-gpu-partitioning-to-sagemaker-inference-endpoints/))
+- **AWS launched Semarak AI Malaysia** (Nov 4), aiming to equip 10,000 SMEs by 2028 and bring Amazon Quick to up to 445,000 civil servants. ([I am K Digital](https://iamkdigital.com/Insights/semarak-ai-malaysia-aws-smes-civil-servants/))
