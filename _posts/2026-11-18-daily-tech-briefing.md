@@ -5,7 +5,6 @@ title: "GPT-6.2 Astra, Java4Shell and the NSANet outage"
 date: 2026-11-18 07:30:00 +0800
 ---
 
-# GPT-6.2 Astra, Java4Shell and the NSANet outage
 
 Prepared: 7:30 AM SGT, Wednesday, 18 November 2026
 
